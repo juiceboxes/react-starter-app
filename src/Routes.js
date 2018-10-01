@@ -4,6 +4,8 @@ import React from 'react';
 import asyncComponent from './Utilities/asyncComponent';
 import some from 'lodash/some';
 
+
+// CHANGE: Routes
 const SampleRouter = asyncComponent(() => import(/* webpackChunkName: "SamplePage" */ './SmartComponents/SamplePages/SampleRouter'));
 const paths = {
     sample: '/sample'
@@ -13,7 +15,7 @@ type Props = {
     childProps: any
 };
 
-const SweetRoute = ({ component: Component, rootClass, ...rest }) => {
+const JuiceRoute = ({ component: Component, rootClass, ...rest }) => {
     const root = document.getElementById('root');
     root.removeAttribute('class');
     root.classList.add(`page__${rootClass}`);
@@ -22,7 +24,7 @@ const SweetRoute = ({ component: Component, rootClass, ...rest }) => {
     return (<Component {...rest} />);
 };
 
-SweetRoute.propTypes = {
+JuiceRoute.propTypes = {
     component: PropTypes.func,
     rootClass: PropTypes.string
 };
@@ -40,7 +42,7 @@ export const Routes = (props: Props) => {
 
     return (
         <Switch>
-            <SweetRoute path={paths.sample} component={SampleRouter} rootClass='sample' />
+            <JuiceRoute path={paths.sample} component={SampleRouter} rootClass='sample' />
             {/* Finally, catch all unmatched routes */}
             <Route render={() => some(paths, p => p === path) ? null : (<Redirect to={paths.sample} />)} />
         </Switch>
