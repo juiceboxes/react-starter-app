@@ -4,7 +4,6 @@ import React from 'react';
 import asyncComponent from './Utilities/asyncComponent';
 import some from 'lodash/some';
 
-
 // CHANGE: Routes
 const SampleRouter = asyncComponent(() => import(/* webpackChunkName: "SamplePage" */ './SmartComponents/SamplePages/SampleRouter'));
 const paths = {
